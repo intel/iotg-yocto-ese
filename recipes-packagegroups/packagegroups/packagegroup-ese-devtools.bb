@@ -87,7 +87,6 @@ RDEPENDS_${PN}-filesystem = "\
 SUMMARY_${PN}-library = "Extended libraries"
 RDEPENDS_${PN}-library = "\
     ${@bb.utils.contains('TARGET_ARCH', 'x86_64', 'gmmlib-dev', '', d)} \
-    ${@bb.utils.contains('TARGET_ARCH', 'x86_64', 'gmmlib-staticdev', '', d)} \
     ${@bb.utils.contains('TARGET_ARCH', 'x86_64', 'itt-dev', '', d)} \
     ${@bb.utils.contains('TARGET_ARCH', 'x86_64', 'itt-staticdev', '', d)} \
     libpcap \
