@@ -43,9 +43,6 @@ RDEPENDS_${PN} = "\
     libxtst \
     libxv \
     libxvmc \
-    libxxf86dga \
-    libxxf86misc \
-    libxxf86vm \
 "
 
 SUMMARY_${PN}-utils = "Extended X11 Utilities"

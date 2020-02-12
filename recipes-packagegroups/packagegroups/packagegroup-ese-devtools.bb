@@ -91,14 +91,14 @@ RDEPENDS_${PN}-library = "\
     ${@bb.utils.contains('TARGET_ARCH', 'x86_64', 'itt-staticdev', '', d)} \
     libpcap \
     libsoup-2.4 \
-    python-dbus \
-    python-numpy \
-    python-pip \
-    python-pyserial \
-    python-modules \
+    python3-attrs \
+    python3-dbus \
+    python3-numpy \
+    python3-pip \
+    python3-pyserial \
     python3-modules \
     python3-pip \
-    python-psutil \
+    python3-psutil \
     libgpiod \
 "
 
