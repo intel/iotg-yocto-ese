@@ -33,7 +33,6 @@ RDEPENDS_${PN}-base = "\
     nspr \
     pciutils \
     procps \
-    python \
     python3 \
     rpm \
     screen \

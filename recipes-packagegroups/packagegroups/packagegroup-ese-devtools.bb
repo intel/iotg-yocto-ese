@@ -42,7 +42,6 @@ RDEPENDS_${PN}-base = "\
     binutils-symlinks \
     bison \
     ccache \
-    chkconfig \
     cmake \
     cpp \
     cpp-symlinks \
