@@ -98,7 +98,7 @@ RDEPENDS_${PN}-library = "\
     python3-modules \
     python3-pip \
     python3-psutil \
-    libgpiod \
+    libgpiod-tools \
 "
 
 SUMMARY_${PN}-net = "Network Tools"

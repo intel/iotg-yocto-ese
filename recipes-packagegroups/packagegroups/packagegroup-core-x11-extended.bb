@@ -40,7 +40,6 @@ RDEPENDS_${PN} = "\
     libxshmfence \
     libxslt \
     libxt \
-    libxtst \
     libxv \
     libxvmc \
 "
