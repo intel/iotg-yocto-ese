@@ -5,7 +5,7 @@ PV = "1.0"
 PR = "r1"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
-inherit packagegroup
+inherit packagegroup features_check
 
 REQUIRED_DISTRO_FEATURES = "x11"
 
@@ -40,7 +40,6 @@ RDEPENDS_${PN} = "\
     libxshmfence \
     libxslt \
     libxt \
-    libxtst \
     libxv \
     libxvmc \
 "
