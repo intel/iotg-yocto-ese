@@ -13,7 +13,7 @@ RDEPENDS_${PN} = "\
     bluez5 \
     bluez5-obex \
     busybox-udhcpc \
-    busybox-udhcpd \
+    ${@bb.utils.contains("DISTRO_FEATURES", "systemd", "busybox", "busybox-udhcpd", d)} \
     ofono \
     hostapd \
     wpa-supplicant \
