@@ -232,8 +232,8 @@ IMAGE_INSTALL_append = " packagegroup-kernel-oot"
 # DPDK
 IMAGE_INSTALL_append = " dpdk dpdk-staticdev dpdk-dev dpdk-examples dpdk-tools"
 PACKAGECONFIG_append_pn-dpdk = " afxdp libvirt"
-KERNEL_PROVIDERS_EXTRA_MODULES[5.4] += "dpdk-module"
-KERNEL_PROVIDERS_EXTRA_MODULES[5.10] += "dpdk-module"
+KERNEL_PROVIDERS_EXTRA_MODULES[5.4] += "dpdk-module dpdk-kmods"
+KERNEL_PROVIDERS_EXTRA_MODULES[5.10] += "dpdk-module dpdk-kmods"
 
 # wifi module is handled specially so that it may be possible to have some kernels using the out of tree module and others
 # using the internal module, see meta-intel-ese-bsp/classes/kernel-wifi-conf.bbclass
@@ -330,3 +330,11 @@ SYSTEMD_AUTO_ENABLE_pn-tpm2-abrmd = "enable"
 
 # user overrides
 include ${TOPDIR}/conf/multiconfig/x86-common.inc
+
+# internal stubs
+include ${TOPDIR}/conf/internal/ese-x86-common-mc-${BB_CURRENT_MC}.inc
+
+# Kernel parameters for dma-buf module to increase the size of buffer list.
+# The default size of dma-buf list are limited and it can't support large frame size
+# which require dma-buf support.
+APPEND_append = " udmabuf.list_limit=8192"

@@ -14,6 +14,10 @@ SECURE_BOOT_CERT_GEN_SUBJECT = "/CN=BSP Signing Key/"
 # these have no effect on automatic key generation
 PREGENERATED_SIGNING_KEY_TYPE = "sha256"
 PREGENERATED_SIGNING_KEY_DIR  = "${TOPDIR}/cert/${PREGENERATED_SIGNING_KEY_TYPE}"
+PREGENERATED_SIGNING_KEY_PK_KEY = "PK.key"
+PREGENERATED_SIGNING_KEY_PK_CRT = "PK.crt"
+PREGENERATED_SIGNING_KEY_KEK_KEY = "KEK.key"
+PREGENERATED_SIGNING_KEY_KEK_CRT = "KEK.crt"
 PREGENERATED_SIGNING_KEY_DB_KEY = "DB.key"
 PREGENERATED_SIGNING_KEY_DB_CRT = "DB.crt"
 PREGENERATED_SIGNING_KEY_MOK_KEY = "yocto.key"
@@ -41,6 +45,12 @@ PREFERRED_PROVIDER_virtual/secure-boot-certificates-slimboot = "secure-boot-cert
 # Uncomment these lines to use pregenerated keys
 #PREFERRED_PROVIDER_virtual/secure-boot-certificates-slimboot = "secure-boot-certificates-slimboot-pregenerated"
 #PREGENERATED_SIGNING_KEY_SLIMBOOT_KEY = "${TOPDIR}/cert/TestSigningPrivateKey.pem"
+
+# Enable efitools LockDown.efi
+# this program allows inserting keys into setup mode secure boot
+IMAGE_FEATURES[validitems] += "efi-lockdown"
+IMAGE_FEATURES_append = " efi-lockdown"
+MENDER_GRUBCONF_CHAINLOADER[efi-secure-boot-lockdown] = "$prefix/LockDown${GNU_EFI_ARCH}.efi"
 
 # user overrides
 include ${TOPDIR}/conf/multiconfig/signing.inc

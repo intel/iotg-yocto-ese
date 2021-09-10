@@ -27,9 +27,6 @@ EXTRA_OECONF_append_x86-64_pn-glibc = " --enable-static-pie --enable-cet"
 RUNTIMETARGET_append_pn-gcc-runtime_libc-glibc = " libvtv"
 CONFIGUREOPTS_append_pn-musl = " --enable-optimize=size"
 
-# Want newer kernel-libc-headers with ptp uapi header patches
-PREFERRED_VERSION_linux-libc-headers = "5.4%"
-
 # Remove unneeded applciations
 PACKAGECONFIG_remove_pn-alsa-tools = "echomixer envy24control rmedigicontrol"
 PACKAGECONFIG_remove_pn-gstreamer1.0-plugins-good = "speex"
