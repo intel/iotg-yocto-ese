@@ -13,14 +13,14 @@ PACKAGES = "\
     ${PN}-library \
 "
 
-RDEPENDS_${PN} = "\
+RDEPENDS:${PN} = "\
     ${PN}-base \
     ${PN}-filesystem \
     ${PN}-library \
 "
 
-SUMMARY_${PN}-base = "Basic utilities"
-RDEPENDS_${PN}-base = "\
+SUMMARY:${PN}-base = "Basic utilities"
+RDEPENDS:${PN}-base = "\
     bash \
     coreutils \
     dnf \
@@ -49,8 +49,8 @@ RDEPENDS_${PN}-base = "\
     ${@bb.utils.contains('DISTRO_FEATURES', 'x11','xterm', '', d)} \
 "
 
-SUMMARY_${PN}-filesystem = "Filesystem, archive and compression tools"
-RDEPENDS_${PN}-filesystem = "\
+SUMMARY:${PN}-filesystem = "Filesystem, archive and compression tools"
+RDEPENDS:${PN}-filesystem = "\
     bzip2 \
     gzip \
     tar \
@@ -58,8 +58,8 @@ RDEPENDS_${PN}-filesystem = "\
     xz \
 "
 
-SUMMARY_${PN}-library = "Core libraries"
-RDEPENDS_${PN}-library = "\
+SUMMARY:${PN}-library = "Core libraries"
+RDEPENDS:${PN}-library = "\
     glibc \
     gtk+3 \
     libstdc++ \
