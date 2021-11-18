@@ -17,8 +17,8 @@ PACKAGES = "\
     ${PN}-tools \
 "
 
-SUMMARY:${PN} = "Graphics Packagegroup"
-RDEPENDS:${PN} = "\
+SUMMARY_${PN} = "Graphics Packagegroup"
+RDEPENDS_${PN} = "\
     ${PN}-base \
     ${PN}-2d \
     ${PN}-3d \
@@ -27,8 +27,8 @@ RDEPENDS:${PN} = "\
     ${PN}-tools \
 "
 
-SUMMARY:${PN}-base = "Graphics Base Support"
-RDEPENDS:${PN}-base = "\
+SUMMARY_${PN}-base = "Graphics Base Support"
+RDEPENDS_${PN}-base = "\
     gstreamer1.0 \
     ${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'gstreamer1.0-plugins-bad', '', d)} \
     gstreamer1.0-plugins-base \
@@ -38,37 +38,37 @@ RDEPENDS:${PN}-base = "\
     metrics-discovery \
 "
 
-SUMMARY:${PN}-2d = "2D Graphics Support"
-RDEPENDS:${PN}-2d = "\
+SUMMARY_${PN}-2d = "2D Graphics Support"
+RDEPENDS_${PN}-2d = "\
     cairo \
     dmidecode \
     ${@bb.utils.contains('DISTRO_FEATURES', 'x11','xf86-video-intel', '', d)} \
 "
 
 # piglit moved to meta-intel-ese-extra-pre
-SUMMARY:${PN}-3d = "3D Graphics Support"
-RDEPENDS:${PN}-3d = "\
+SUMMARY_${PN}-3d = "3D Graphics Support"
+RDEPENDS_${PN}-3d = "\
     glew \
     ${@bb.utils.contains('DISTRO_FEATURES', 'x11','libglu', '', d)} \
     mesa \
 "
 
-SUMMARY:${PN}-display = "Graphics Display Support"
-RDEPENDS:${PN}-display = "\
+SUMMARY_${PN}-display = "Graphics Display Support"
+RDEPENDS_${PN}-display = "\
     libjpeg-turbo \
     libpng \
 "
 
-SUMMARY:${PN}-media = "Graphics Media Support"
-RDEPENDS:${PN}-media = "\
+SUMMARY_${PN}-media = "Graphics Media Support"
+RDEPENDS_${PN}-media = "\
     libva \
     libva-utils \
     ${@bb.utils.contains('DISTRO_FEATURES', 'x11','gstreamer1.0-vaapi', '', d)} \
     v4l-utils \
 "
 
-SUMMARY:${PN}-tools = "Graphics Tools Support"
-RDEPENDS:${PN}-tools = "\
+SUMMARY_${PN}-tools = "Graphics Tools Support"
+RDEPENDS_${PN}-tools = "\
     fontconfig \
     freetype \
     glog \

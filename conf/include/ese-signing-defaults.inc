@@ -49,7 +49,7 @@ PREFERRED_PROVIDER_virtual/secure-boot-certificates-slimboot = "secure-boot-cert
 # Enable efitools LockDown.efi
 # this program allows inserting keys into setup mode secure boot
 IMAGE_FEATURES[validitems] += "efi-lockdown"
-IMAGE_FEATURES:append = " efi-lockdown"
+IMAGE_FEATURES_append = " efi-lockdown"
 MENDER_GRUBCONF_CHAINLOADER[efi-secure-boot-lockdown] = "$prefix/LockDown${GNU_EFI_ARCH}.efi"
 
 # user overrides
