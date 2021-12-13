@@ -15,7 +15,7 @@ PACKAGES = "\
 "
 
 
-RDEPENDS_${PN} = "\
+RDEPENDS:${PN} = "\
     ${PN}-base \
     ${PN}-debugger \
     ${PN}-filesystem \
@@ -23,8 +23,8 @@ RDEPENDS_${PN} = "\
     ${PN}-net \
 "
 
-SUMMARY_${PN}-debugger = "Debugging tools"
-RDEPENDS_${PN}-debugger = "\
+SUMMARY:${PN}-debugger = "Debugging tools"
+RDEPENDS:${PN}-debugger = "\
     gdb \
     gdbserver \
     strace \
@@ -33,8 +33,8 @@ RDEPENDS_${PN}-debugger = "\
     libcap-bin \
 "
 
-SUMMARY_${PN}-base = "Base development tools"
-RDEPENDS_${PN}-base = "\
+SUMMARY:${PN}-base = "Base development tools"
+RDEPENDS:${PN}-base = "\
     autoconf \
     automake \
     bc \
@@ -69,8 +69,8 @@ RDEPENDS_${PN}-base = "\
     yasm \
 "
 
-SUMMARY_${PN}-filesystem = "File system tools"
-RDEPENDS_${PN}-filesystem = "\
+SUMMARY:${PN}-filesystem = "File system tools"
+RDEPENDS:${PN}-filesystem = "\
     cifs-utils \
     dosfstools \
     e2fsprogs \
@@ -83,8 +83,8 @@ RDEPENDS_${PN}-filesystem = "\
     squashfs-tools \
 "
 
-SUMMARY_${PN}-library = "Extended libraries"
-RDEPENDS_${PN}-library = "\
+SUMMARY:${PN}-library = "Extended libraries"
+RDEPENDS:${PN}-library = "\
     ${@bb.utils.contains('TARGET_ARCH', 'x86_64', 'gmmlib-dev', '', d)} \
     ${@bb.utils.contains('TARGET_ARCH', 'x86_64', 'itt-dev', '', d)} \
     ${@bb.utils.contains('TARGET_ARCH', 'x86_64', 'itt-staticdev', '', d)} \
@@ -101,8 +101,8 @@ RDEPENDS_${PN}-library = "\
     libgpiod-tools \
 "
 
-SUMMARY_${PN}-net = "Network Tools"
-RDEPENDS_${PN}-net = "\
+SUMMARY:${PN}-net = "Network Tools"
+RDEPENDS:${PN}-net = "\
    connman \
    connman-client \
    connman-tools \

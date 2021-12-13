@@ -8,8 +8,8 @@ inherit packagegroup
 
 PACKAGES = "${PN}"
 
-SUMMARY_${PN} = "Wireless tools"
-RDEPENDS_${PN} = "\
+SUMMARY:${PN} = "Wireless tools"
+RDEPENDS:${PN} = "\
     bluez5 \
     bluez5-obex \
     busybox-udhcpc \
