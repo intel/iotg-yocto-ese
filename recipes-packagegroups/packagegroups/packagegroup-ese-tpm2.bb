@@ -11,15 +11,15 @@ PACKAGES = "\
     ${PN}-tss \
 "
 
-SUMMARY:${PN} = "tpm2 all components"
-RDEPENDS:${PN} = "\
+SUMMARY_${PN} = "tpm2 all components"
+RDEPENDS_${PN} = "\
     tpm2-abrmd \
     tpm2-tools \
     ${PN}-tss \
 "
 
-SUMMARY:${PN}-tss = "tpm2 tss packages"
-RDEPENDS:${PN}-tss = "\
+SUMMARY_${PN}-tss = "tpm2 tss packages"
+RDEPENDS_${PN}-tss = "\
     libtss2-mu \
     libtss2-mu-dev \
     libtss2-mu-staticdev \

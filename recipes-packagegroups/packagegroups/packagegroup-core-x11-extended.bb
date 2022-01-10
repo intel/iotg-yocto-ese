@@ -14,8 +14,8 @@ PACKAGES = "\
     ${PN}-utils \
 "
 
-SUMMARY:${PN} = "Extended X11 Libraries"
-RDEPENDS:${PN} = "\
+SUMMARY_${PN} = "Extended X11 Libraries"
+RDEPENDS_${PN} = "\
     packagegroup-core-x11-base \
     packagegroup-core-x11-extended-utils \
     libpciaccess \
@@ -44,8 +44,8 @@ RDEPENDS:${PN} = "\
     libxvmc \
 "
 
-SUMMARY:${PN}-utils = "Extended X11 Utilities"
-RDEPENDS:${PN}-utils = "\
+SUMMARY_${PN}-utils = "Extended X11 Utilities"
+RDEPENDS_${PN}-utils = "\
     x11perf \
     xcb-util \
     xrdb \
