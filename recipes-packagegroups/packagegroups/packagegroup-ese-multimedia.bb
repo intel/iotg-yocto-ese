@@ -10,7 +10,7 @@ inherit packagegroup
 PACKAGES = "${PN} ${PN}-audio-base ${PN}-audio-codecs ${PN}-audio-libraries \
             ${PN}-video-codecs ${PN}-media-player"
 
-RDEPENDS_${PN} = "\
+RDEPENDS:${PN} = "\
     ${PN}-audio-base \
     ${PN}-audio-codecs \
     ${PN}-audio-libraries \
@@ -18,7 +18,7 @@ RDEPENDS_${PN} = "\
     ${PN}-media-player \
 "
 
-SUMMARY_${PN}-audio-base = "Essential Audio Support"
+SUMMARY:${PN}-audio-base = "Essential Audio Support"
 PULSEAUDIO_PKGS ?= "\
     pulseaudio-server \
     pulseaudio-misc \
@@ -28,7 +28,7 @@ PULSEAUDIO_PKGS ?= "\
     pulseaudio-module-bluez5-device \
     pulseaudio-module-bluez5-discover \
 "
-RDEPENDS_${PN}-audio-base = "\
+RDEPENDS:${PN}-audio-base = "\
     libasound \
     alsa-oss \
     alsa-tools \
@@ -36,21 +36,21 @@ RDEPENDS_${PN}-audio-base = "\
     ${@bb.utils.contains('DISTRO_FEATURES', 'pulseaudio', '${PULSEAUDIO_PKGS}', '', d)} \
 "
 
-SUMMARY_${PN}-audio-codecs = "Audio Codecs Support"
-RDEPENDS_${PN}-audio-codecs = "\
+SUMMARY:${PN}-audio-codecs = "Audio Codecs Support"
+RDEPENDS:${PN}-audio-codecs = "\
     flac \
 "
 
-SUMMARY_${PN}-audio-libraries = "Audio Libraries Support"
-RDEPENDS_${PN}-audio-libraries = "\
+SUMMARY:${PN}-audio-libraries = "Audio Libraries Support"
+RDEPENDS:${PN}-audio-libraries = "\
     alsa-lib \
 "
 
-SUMMARY_${PN}-video-codecs = "Video Codecs Support"
-RDEPENDS_${PN}-video-codecs = "\
+SUMMARY:${PN}-video-codecs = "Video Codecs Support"
+RDEPENDS:${PN}-video-codecs = "\
     x264 \
 "
 
-SUMMARY_${PN}-media-player = "Media Player Support"
-RDEPENDS_${PN}-media-player = "\
+SUMMARY:${PN}-media-player = "Media Player Support"
+RDEPENDS:${PN}-media-player = "\
 "
