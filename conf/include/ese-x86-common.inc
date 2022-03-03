@@ -129,7 +129,7 @@ EXTRA_OECONF:append:pn-tpm2-tss = " --with-tctidefaultmodule=libtss2-tcti-tabrmd
 DISTRO_FEATURES:append = " pulseaudio"
 
 # linux-firmware
-IMAGE_INSTALL:append = " linux-firmware"
+IMAGE_INSTALL:append = " linux-firmware intel-linux-firmware"
 
 
 # Bluetooth management
@@ -248,6 +248,7 @@ IMAGE_INSTALL:append = " dpdk dpdk-staticdev dpdk-dev dpdk-examples dpdk-tools"
 PACKAGECONFIG:append:pn-dpdk = " afxdp libvirt"
 KERNEL_PROVIDERS_EXTRA_MODULES[5.4] += "dpdk-module dpdk-kmods"
 KERNEL_PROVIDERS_EXTRA_MODULES[5.10] += "dpdk-module dpdk-kmods"
+KERNEL_PROVIDERS_EXTRA_MODULES[5.15] += "dpdk-module dpdk-kmods"
 
 # wifi module is handled specially so that it may be possible to have some kernels using the out of tree module and others
 # using the internal module, see meta-intel-ese-bsp/classes/kernel-wifi-conf.bbclass
