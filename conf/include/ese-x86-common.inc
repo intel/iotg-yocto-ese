@@ -19,7 +19,7 @@ PREFERRED_PROVIDER_nativesdk-zlib = "nativesdk-zlib"
 
 # Security package
 IMAGE_INSTALL:append = " libseccomp apparmor jhi smack"
-DISTRO_FEATURES:append = " apparmor"
+DISTRO_FEATURES:append = " seccomp security apparmor"
 
 # Apparmor & seccomp support
 APPEND += "apparmor=1 security=apparmor mem_sleep_default=deep"
@@ -189,7 +189,7 @@ RDEPENDS:packagegroup-core-x11-sato-base:remove:pn-packagegroup-core-x11-sato = 
     settings-daemon \
     shutdown-desktop \
 "
-RDEPENDS_packagegroup-core-x11-sato_remove_pn-packagegroup-core-x11-sato = "packagegroup-core-x11-sato-games packagegroup-core-x11-sato-apps"
+RDEPENDS:packagegroup-core-x11-sato:remove:pn-packagegroup-core-x11-sato = "packagegroup-core-x11-sato-games packagegroup-core-x11-sato-apps"
 
 #################
 # ESE PACKAGES
