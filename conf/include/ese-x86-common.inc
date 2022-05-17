@@ -253,12 +253,14 @@ KERNEL_PROVIDERS_EXTRA_MODULES[5.15] += "dpdk-module dpdk-kmods"
 # wifi module is handled specially so that it may be possible to have some kernels using the out of tree module and others
 # using the internal module, see meta-intel-ese-bsp/classes/kernel-wifi-conf.bbclass
 # enabling the driver from backport-iwlwifi disables the kernel in-tree version
-DISTRO_FEATURES:append = " backport-iwlwifi-5.4 backport-iwlwifi-5.10"
+DISTRO_FEATURES:append = " backport-iwlwifi-5.4 backport-iwlwifi-5.10 backport-iwlwifi-5.15"
 KERNEL_PROVIDERS_EXTRA_MODULES_WIFI_COMPAT ?= ""
 KERNEL_PROVIDERS_EXTRA_MODULES_WIFI_COMPAT:append = "${@bb.utils.contains("DISTRO_FEATURES", "backport-iwlwifi-5.4",  " 5.4",  "", d)}"
 KERNEL_PROVIDERS_EXTRA_MODULES_WIFI_COMPAT:append = "${@bb.utils.contains("DISTRO_FEATURES", "backport-iwlwifi-5.10", " 5.10", "", d)}"
+KERNEL_PROVIDERS_EXTRA_MODULES_WIFI_COMPAT:append = "${@bb.utils.contains("DISTRO_FEATURES", "backport-iwlwifi-5.15", " 5.15", "", d)}"
 KERNEL_PROVIDERS_EXTRA_MODULES[5.4]  += "${@bb.utils.contains("DISTRO_FEATURES", "backport-iwlwifi-5.4",  "backport-iwlwifi", "", d)}"
 KERNEL_PROVIDERS_EXTRA_MODULES[5.10] += "${@bb.utils.contains("DISTRO_FEATURES", "backport-iwlwifi-5.10", "backport-iwlwifi", "", d)}"
+KERNEL_PROVIDERS_EXTRA_MODULES[5.15] += "${@bb.utils.contains("DISTRO_FEATURES", "backport-iwlwifi-5.15", "backport-iwlwifi", "", d)}"
 
 # autoload modules
 KERNEL_MODULE_AUTOLOAD:append = " configfs uhid"

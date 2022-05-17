@@ -9,15 +9,16 @@ DISTRO_FEATURES:append = " virtualization"
 
 # available multiconfigs
 # users may mask uneeded ones to speed up bitbake
-BBMULTICONFIG ??= "x86 x86-ese-installer x86-rt x86-mlt x86-skylake x86-musl x86-minimal x86-qemu_host x86-minimal-netboot x86-minimal-provisioning \
+BBMULTICONFIG ??= "x86 x86-ese-installer x86-rt x86-mlt x86-skylake x86-musl x86-minimal x86-minimal-netboot x86-minimal-provisioning \
   x86-2020-minimal x86-2020 x86-rt-2020 \
-  x86-2021 x86-2021-minimal x86-2021-minimal-netboot x86-rt-2021"
+  x86-2021 x86-2021-minimal x86-2021-minimal-netboot x86-rt-2021 x86-2021-qemu_host \
+  x86-next"
 
 # Machine Selection
 MACHINE ??= "intel-corei7-64"
 # Take note that as we are building 3rd party ingredient.
 # We need the LICENSE_FLAGS below.
-LICENSE_FLAGS_WHITELIST += "commercial"
+LICENSE_FLAGS_ACCEPTED += "commercial"
 
 # enable gcc security flags and optimizations
 require conf/distro/include/security_flags.inc
