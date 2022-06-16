@@ -11,6 +11,12 @@
 # the option is a question of removing the # character and making any change to the
 # variable as required.
 
+#zlib providers
+# Only use the Intel-tuned zlib for target builds to improve reuse
+PREFERRED_PROVIDER_zlib = "zlib-intel"
+PREFERRED_PROVIDER_zlib-native = "zlib-native"
+PREFERRED_PROVIDER_nativesdk-zlib = "nativesdk-zlib"
+
 # Security package
 IMAGE_INSTALL:append = " libseccomp apparmor jhi smack"
 DISTRO_FEATURES:append = " seccomp security apparmor"
@@ -28,8 +34,6 @@ APPEND:append = " init=/sbin/preinit-env"
 
 # Network package
 IMAGE_INSTALL:append = " mosquitto"
-
-PREFERRED_VERSION_systemd-bootchart = "233%"
 
 # Runtime environment export setting for x11
 IMAGE_INSTALL:append = " xserver-nodm-config"
@@ -124,7 +128,6 @@ DISTRO_FEATURES:append = " pulseaudio"
 
 # linux-firmware
 IMAGE_INSTALL:append = " linux-firmware intel-linux-firmware"
-
 
 # Bluetooth management
 IMAGE_INSTALL:append = " bluez5-noinst-tools bluez5-testtools"
@@ -319,9 +322,6 @@ IMAGE_INSTALL:append = " openvino-model-optimizer"
 
 # python3 packages needed by the inference engine python test script to transform the input image to expected format
 IMAGE_INSTALL:append = " python3-opencv python3-numpy"
-
-# Set preferred version for TBB
-PREFERRED_VERSION_tbb = "2021.2%"
 
 # Include optimized deep learning models and a set of demos
 IMAGE_INSTALL:append = " open-model-zoo"
