@@ -11,6 +11,12 @@
 # the option is a question of removing the # character and making any change to the
 # variable as required.
 
+#zlib providers
+# Only use the Intel-tuned zlib for target builds to improve reuse
+PREFERRED_PROVIDER_zlib = "zlib-intel"
+PREFERRED_PROVIDER_zlib-native = "zlib-native"
+PREFERRED_PROVIDER_nativesdk-zlib = "nativesdk-zlib"
+
 # Security package
 IMAGE_INSTALL:append = " libseccomp apparmor jhi smack"
 DISTRO_FEATURES:append = " seccomp security apparmor"
