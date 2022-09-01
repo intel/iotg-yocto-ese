@@ -86,6 +86,11 @@ BBMASK:append = " meta-mender/meta-mender-core/recipes-bsp/(grub/grub-efi_%.bbap
 # meta-intel-edison nor meta-debian is not used
 BBMASK:append = " meta-mender/meta-mender-core/recipes-bsp/u-boot/u-boot-fw-utils_%.bbappend"
 
+# Fix parsing error of meta-mender-core/recipes-bsp/grub/grub-efi-mender-precompiled_2.04.bb
+# Variable 'MENDER_EFI_LOADER' is defined in bbclass file 'mender-setup-grub.inc' but 'INHERIT:remove = "mender-setup"'
+# removing the inclusion of bbclass file 'mender-setup-grub.inc'
+MENDER_EFI_LOADER:pn-grub-efi-mender-precompiled ??= ""
+
 # meta-intel-edison nor meta-debian is not used
 BBMASK:append = " meta-mender/meta-mender-core/recipes-bsp/u-boot/u-boot-fw-utils_%.bbappend"
 
