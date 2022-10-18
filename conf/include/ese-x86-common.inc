@@ -345,3 +345,8 @@ include ${TOPDIR}/conf/internal/ese-x86-common-mc-${BB_CURRENT_MC}.inc
 # The default size of dma-buf list are limited and it can't support large frame size
 # which require dma-buf support.
 APPEND:append = " udmabuf.list_limit=8192"
+
+# intel distribution of weston
+PREFERRED_PROVIDER_weston = "weston-intel"
+PREFERRED_PROVIDER_weston-native = "weston-intel-native"
+PREFERRED_PROVIDER_nativesdk-weston = "nativesdk-weston-intel"

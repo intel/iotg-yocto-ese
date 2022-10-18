@@ -12,7 +12,7 @@ DISTRO_FEATURES:append = " virtualization"
 BBMULTICONFIG ??= "x86 x86-ese-installer x86-rt x86-mlt x86-skylake x86-musl x86-minimal x86-minimal-netboot x86-minimal-provisioning \
   x86-2020-minimal x86-2020-minimal-netboot x86-2020 x86-rt-2020 \
   x86-2021 x86-2021-minimal x86-2021-minimal-netboot x86-rt-2021 x86-2021-qemu_host \
-  x86-next"
+  x86-next x86-rt-next"
 
 # Machine Selection
 MACHINE ??= "intel-corei7-64"
@@ -106,3 +106,6 @@ PACKAGECONFIG:append:pn-squashfs-tools-native = " zstd"
 
 # meta virtualization is outdated
 BBMASK:append = " meta-virtualization/recipes-core/busybox/"
+
+# multiconfig stub override
+include ${TOPDIR}/conf/multiconfig.conf
