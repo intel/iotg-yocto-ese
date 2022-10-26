@@ -106,6 +106,3 @@ PACKAGECONFIG:append:pn-squashfs-tools-native = " zstd"
 
 # meta virtualization is outdated
 BBMASK:append = " meta-virtualization/recipes-core/busybox/"
-
-# multiconfig stub override
-include ${TOPDIR}/conf/multiconfig.conf
