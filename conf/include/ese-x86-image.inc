@@ -43,6 +43,9 @@ WKS_SWAP_HINT = "PARTLABEL=swap"
 WKS_RESUME_HINT = "${WKS_SWAP_HINT}"
 WKS_BOOT_HINT = "mender.efi=${WKS_ESP_HINT} mender.primary=${WKS_ROOTA_HINT} mender.secondary=${WKS_ROOTB_HINT} mender.data=${WKS_DATA_HINT} mender.swap=${WKS_SWAP_HINT} resume=${WKS_RESUME_HINT}"
 
+# used by sblimage kernel commandline parameter
+WKS_SBL_HINT = " root=PARTLABEL=primary"
+
 # Compressed squashfs-xz root on wic
 # Please check notes in the .conf file for caveats and implementation details
 # Uncomment to use squashfs-xz
