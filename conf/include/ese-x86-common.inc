@@ -323,6 +323,10 @@ IMAGE_INSTALL:append = " open-model-zoo"
 ########## clang/llvm size problems
 BAD_RECOMMENDATIONS:append = " clang-staticdev"
 
+#opencl-clang for LLVM12
+PREFERRED_VERSION_opencl-clang = "12%"
+PREFERRED_VERSION_opencl-clang-native = "12%"
+
 # Adding recipes for platform specific changes
 IMAGE_INSTALL:append = " audio-hda-load"
 
