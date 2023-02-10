@@ -350,6 +350,9 @@ include ${TOPDIR}/conf/internal/ese-x86-common-mc-${BB_CURRENT_MC}.inc
 # which require dma-buf support.
 APPEND:append = " udmabuf.list_limit=8192"
 
+#this changes is specifically for ADL-N
+APPEND:append = " nopcid"
+
 # intel distribution of weston
 PREFERRED_PROVIDER_weston = "weston-intel"
 PREFERRED_PROVIDER_weston-native = "weston-intel-native"
