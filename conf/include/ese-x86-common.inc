@@ -237,20 +237,17 @@ IMAGE_INSTALL:append = " packagegroup-kernel-oot"
 # DPDK
 IMAGE_INSTALL:append = " dpdk dpdk-staticdev dpdk-dev dpdk-examples dpdk-tools"
 PACKAGECONFIG:append:pn-dpdk = " afxdp libvirt"
-KERNEL_PROVIDERS_EXTRA_MODULES[5.4] += "dpdk-module dpdk-kmods"
 KERNEL_PROVIDERS_EXTRA_MODULES[5.10] += "dpdk-module dpdk-kmods"
 KERNEL_PROVIDERS_EXTRA_MODULES[5.15] += "dpdk-module dpdk-kmods"
 
 # wifi module is handled specially so that it may be possible to have some kernels using the out of tree module and others
 # using the internal module, see meta-intel-ese-bsp/classes/kernel-wifi-conf.bbclass
 # enabling the driver from backport-iwlwifi disables the kernel in-tree version
-DISTRO_FEATURES:append = " backport-iwlwifi-5.4 backport-iwlwifi-5.10 backport-iwlwifi-5.15 backport-iwlwifi-5.17"
+DISTRO_FEATURES:append = " backport-iwlwifi-5.10 backport-iwlwifi-5.15 backport-iwlwifi-5.17"
 KERNEL_PROVIDERS_EXTRA_MODULES_WIFI_COMPAT ?= ""
-KERNEL_PROVIDERS_EXTRA_MODULES_WIFI_COMPAT:append = "${@bb.utils.contains("DISTRO_FEATURES", "backport-iwlwifi-5.4",  " 5.4",  "", d)}"
 KERNEL_PROVIDERS_EXTRA_MODULES_WIFI_COMPAT:append = "${@bb.utils.contains("DISTRO_FEATURES", "backport-iwlwifi-5.10", " 5.10", "", d)}"
 KERNEL_PROVIDERS_EXTRA_MODULES_WIFI_COMPAT:append = "${@bb.utils.contains("DISTRO_FEATURES", "backport-iwlwifi-5.15", " 5.15", "", d)}"
 KERNEL_PROVIDERS_EXTRA_MODULES_WIFI_COMPAT:append = "${@bb.utils.contains("DISTRO_FEATURES", "backport-iwlwifi-5.17", " 5.17", "", d)}"
-KERNEL_PROVIDERS_EXTRA_MODULES[5.4]  += "${@bb.utils.contains("DISTRO_FEATURES", "backport-iwlwifi-5.4",  "backport-iwlwifi", "", d)}"
 KERNEL_PROVIDERS_EXTRA_MODULES[5.10] += "${@bb.utils.contains("DISTRO_FEATURES", "backport-iwlwifi-5.10", "backport-iwlwifi", "", d)}"
 KERNEL_PROVIDERS_EXTRA_MODULES[5.15] += "${@bb.utils.contains("DISTRO_FEATURES", "backport-iwlwifi-5.15", "backport-iwlwifi", "", d)}"
 KERNEL_PROVIDERS_EXTRA_MODULES[5.17] += "${@bb.utils.contains("DISTRO_FEATURES", "backport-iwlwifi-5.17", "backport-iwlwifi", "", d)}"
@@ -354,3 +351,9 @@ APPEND:append = " udmabuf.list_limit=8192"
 PREFERRED_PROVIDER_weston = "weston-intel"
 PREFERRED_PROVIDER_weston-native = "weston-intel-native"
 PREFERRED_PROVIDER_nativesdk-weston = "nativesdk-weston-intel"
+
+# To generate Software Bill of Materials (SBOM), using the SPDX standard
+INHERIT += "create-spdx"
+SPDX_PRETTY = "1"
+SSTATE_ALLOW_OVERLAP_FILES:pn-metrics-discovery += "${DEPLOY_DIR_SPDX}/packages/libmd-dev.spdx.json ${DEPLOY_DIR_SPDX}/packages/libmd-dbg.spdx.json ${DEPLOY_DIR_SPDX}/packages/libmd-src.spdx.json ${DEPLOY_DIR_SPDX}/runtime/runtime-libmd-dev.spdx.json ${DEPLOY_DIR_SPDX}/runtime/runtime-libmd-dbg.spdx.json ${DEPLOY_DIR_SPDX}/runtime/runtime-libmd-src.spdx.json"
+SSTATE_ALLOW_OVERLAP_FILES:pn-libmd += "${DEPLOY_DIR_SPDX}/packages/libmd-dev.spdx.json ${DEPLOY_DIR_SPDX}/packages/libmd-dbg.spdx.json ${DEPLOY_DIR_SPDX}/packages/libmd-src.spdx.json ${DEPLOY_DIR_SPDX}/runtime/runtime-libmd-dev.spdx.json ${DEPLOY_DIR_SPDX}/runtime/runtime-libmd-dbg.spdx.json ${DEPLOY_DIR_SPDX}/runtime/runtime-libmd-src.spdx.json"
