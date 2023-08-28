@@ -333,6 +333,15 @@ IMAGE_INSTALL:append = "${@bb.utils.contains("IMAGE_FEATURES", "dev-pkgs", " itt
 # Enable tpm2-abrmd service
 SYSTEMD_AUTO_ENABLE:pn-tpm2-abrmd = "enable"
 
+# Set tpm2-tools preferred version
+PREFERRED_VERSION_tpm2-tools = "5.5"
+
+# Set tpm2-tss preferred version
+PREFERRED_VERSION_tpm2-tss = "4.0.1"
+
+# Set tpm2-abrmd preferred version
+PREFERRED_VERSION_tpm2-abrmd = "3.0.0"
+
 # user overrides
 include ${TOPDIR}/conf/multiconfig/x86-common.inc
 
