@@ -121,7 +121,7 @@ EXTRA_OECONF:append:pn-tpm2-tss = " --with-tctidefaultmodule=libtss2-tcti-tabrmd
 DISTRO_FEATURES:append = " pulseaudio"
 
 # linux-firmware
-IMAGE_INSTALL:append = " linux-firmware intel-linux-firmware"
+IMAGE_INSTALL:append = " linux-firmware"
 
 # Bluetooth management
 IMAGE_INSTALL:append = " bluez5-noinst-tools bluez5-testtools"
@@ -156,14 +156,15 @@ IMAGE_INSTALL:append = " live555-examples"
 
 # Qemu virtualization support
 DISTRO_FEATURES:append = " virtualization"
-IMAGE_INSTALL:append = " qemu ovmf-edk2"
+IMAGE_INSTALL:append = " qemu ovmf-edk2 qemu-guest-agent"
 PACKAGECONFIG:append:pn-qemu = " libusb glx gtk+"
+
 # Set preferred version for qemu
-# Limiting the preffered version to hardknott only since it is causing warning issues on dunfell
-PREFERRED_VERSION_qemu ?= "${@bb.utils.contains("LAYERSERIES_COMPAT_core","hardknott", "6.0%", "", d)}"
-PREFERRED_VERSION_qemu-native ?= "${@bb.utils.contains("LAYERSERIES_COMPAT_core","hardknott", "6.0%", "", d)}"
-PREFERRED_VERSION_qemu-system-native ?= "${@bb.utils.contains("LAYERSERIES_COMPAT_core","hardknott", "6.0%", "", d)}"
-PREFERRED_VERSION_nativesdk-qemu ?= "${@bb.utils.contains("LAYERSERIES_COMPAT_core","hardknott", "6.0%", "", d)}"
+# Limiting the preffered version to specific recipe only
+PREFERRED_VERSION_qemu ?= "${@bb.utils.contains("LAYERSERIES_COMPAT_core","kirkstone", "8.%", "", d)}"
+PREFERRED_VERSION_qemu-native ?= "${@bb.utils.contains("LAYERSERIES_COMPAT_core","kirkstone", "8.%", "", d)}"
+PREFERRED_VERSION_qemu-system-native ?= "${@bb.utils.contains("LAYERSERIES_COMPAT_core","kirkstone", "8.%", "", d)}"
+PREFERRED_VERSION_nativesdk-qemu ?= "${@bb.utils.contains("LAYERSERIES_COMPAT_core","kirkstone", "8.%", "", d)}"
 
 # Using icewm instead of matchbox
 IMAGE_INSTALL:append = " icewm"
@@ -332,15 +333,6 @@ IMAGE_INSTALL:append = "${@bb.utils.contains("IMAGE_FEATURES", "dev-pkgs", " itt
 
 # Enable tpm2-abrmd service
 SYSTEMD_AUTO_ENABLE:pn-tpm2-abrmd = "enable"
-
-# Set tpm2-tools preferred version
-PREFERRED_VERSION_tpm2-tools = "5.5"
-
-# Set tpm2-tss preferred version
-PREFERRED_VERSION_tpm2-tss = "4.0.1"
-
-# Set tpm2-abrmd preferred version
-PREFERRED_VERSION_tpm2-abrmd = "3.0.0"
 
 # user overrides
 include ${TOPDIR}/conf/multiconfig/x86-common.inc
