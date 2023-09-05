@@ -318,9 +318,9 @@ IMAGE_INSTALL:append = " open-model-zoo"
 ########## clang/llvm size problems
 BAD_RECOMMENDATIONS:append = " clang-staticdev"
 
-#opencl-clang for LLVM12
-PREFERRED_VERSION_opencl-clang = "12%"
-PREFERRED_VERSION_opencl-clang-native = "12%"
+# Set preferred version for opencl-clang to LLVM14
+PREFERRED_VERSION_opencl-clang = "14%"
+PREFERRED_VERSION_opencl-clang-native = "14%"
 
 # Adding recipes for platform specific changes
 IMAGE_INSTALL:append = " audio-hda-load"
@@ -333,6 +333,15 @@ IMAGE_INSTALL:append = "${@bb.utils.contains("IMAGE_FEATURES", "dev-pkgs", " itt
 
 # Enable tpm2-abrmd service
 SYSTEMD_AUTO_ENABLE:pn-tpm2-abrmd = "enable"
+
+# Set tpm2-tools preferred version
+PREFERRED_VERSION_tpm2-tools = "5.5"
+
+# Set tpm2-tss preferred version
+PREFERRED_VERSION_tpm2-tss = "4.0.1"
+
+# Set tpm2-abrmd preferred version
+PREFERRED_VERSION_tpm2-abrmd = "3.0.0"
 
 # user overrides
 include ${TOPDIR}/conf/multiconfig/x86-common.inc
