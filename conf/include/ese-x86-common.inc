@@ -360,10 +360,10 @@ PREFERRED_PROVIDER_weston-native = "weston-intel-native"
 PREFERRED_PROVIDER_nativesdk-weston = "nativesdk-weston-intel"
 
 # To generate Software Bill of Materials (SBOM), using the SPDX standard
-INHERIT += "create-spdx"
-SPDX_PRETTY = "1"
-SSTATE_ALLOW_OVERLAP_FILES:pn-metrics-discovery += "${DEPLOY_DIR_SPDX}/packages/libmd-dev.spdx.json ${DEPLOY_DIR_SPDX}/packages/libmd-dbg.spdx.json ${DEPLOY_DIR_SPDX}/packages/libmd-src.spdx.json ${DEPLOY_DIR_SPDX}/runtime/runtime-libmd-dev.spdx.json ${DEPLOY_DIR_SPDX}/runtime/runtime-libmd-dbg.spdx.json ${DEPLOY_DIR_SPDX}/runtime/runtime-libmd-src.spdx.json"
-SSTATE_ALLOW_OVERLAP_FILES:pn-libmd += "${DEPLOY_DIR_SPDX}/packages/libmd-dev.spdx.json ${DEPLOY_DIR_SPDX}/packages/libmd-dbg.spdx.json ${DEPLOY_DIR_SPDX}/packages/libmd-src.spdx.json ${DEPLOY_DIR_SPDX}/runtime/runtime-libmd-dev.spdx.json ${DEPLOY_DIR_SPDX}/runtime/runtime-libmd-dbg.spdx.json ${DEPLOY_DIR_SPDX}/runtime/runtime-libmd-src.spdx.json"
+# INHERIT += "create-spdx"
+# SPDX_PRETTY = "1"
+# SSTATE_ALLOW_OVERLAP_FILES:pn-metrics-discovery += "${DEPLOY_DIR_SPDX}/packages/libmd-dev.spdx.json ${DEPLOY_DIR_SPDX}/packages/libmd-dbg.spdx.json ${DEPLOY_DIR_SPDX}/packages/libmd-src.spdx.json ${DEPLOY_DIR_SPDX}/runtime/runtime-libmd-dev.spdx.json ${DEPLOY_DIR_SPDX}/runtime/runtime-libmd-dbg.spdx.json ${DEPLOY_DIR_SPDX}/runtime/runtime-libmd-src.spdx.json"
+# SSTATE_ALLOW_OVERLAP_FILES:pn-libmd += "${DEPLOY_DIR_SPDX}/packages/libmd-dev.spdx.json ${DEPLOY_DIR_SPDX}/packages/libmd-dbg.spdx.json ${DEPLOY_DIR_SPDX}/packages/libmd-src.spdx.json ${DEPLOY_DIR_SPDX}/runtime/runtime-libmd-dev.spdx.json ${DEPLOY_DIR_SPDX}/runtime/runtime-libmd-dbg.spdx.json ${DEPLOY_DIR_SPDX}/runtime/runtime-libmd-src.spdx.json"
 
 # Adding recipes for SRIOV (Spice display and protocol feature)
 IMAGE_INSTALL:append = " spice spice-gtk usbredir virt-viewer"
