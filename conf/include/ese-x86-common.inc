@@ -51,6 +51,7 @@ IMAGE_INSTALL:append = "${@bb.utils.contains("DISTRO_FEATURES","onevpl", " onevp
 PACKAGECONFIG:append:pn-gstreamer1.0-libav = " libav"
 PACKAGECONFIG:append:pn-gstreamer1.0-plugins-base = "${@bb.utils.filter('DISTRO_FEATURES', 'opengl', d)}"
 IMAGE_INSTALL:append = " vulkan-loader"
+PACKAGECONFIG:append:pn-gstreamer1.0-plugins-bad = " va"
 
 # mesa iris driver
 PACKAGECONFIG:append:pn-mesa:class-target = " gallium gallium-llvm"
@@ -290,6 +291,10 @@ VIRTUAL-RUNTIME_initscripts = ""
 
 # Enable clDNN only when needed, as this will pull in additional compile-time
 # and runtime dependencies for Intel Graphics Compute Runtime for OpenCL
+# Set preferred version for pybind to build latest openvino
+PREFERRED_VERSION_python3-pybind11 = "2.11.1"
+PREFERRED_VERSION_python3-pybind11-native = "2.11.1"
+
 PACKAGECONFIG:append:pn-openvino-inference-engine = " opencl"
 
 # Enable building inference engine python API.
