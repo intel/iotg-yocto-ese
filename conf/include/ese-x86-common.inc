@@ -288,10 +288,6 @@ VIRTUAL-RUNTIME_initscripts = ""
 
 # Enable clDNN only when needed, as this will pull in additional compile-time
 # and runtime dependencies for Intel Graphics Compute Runtime for OpenCL
-# Set preferred version for pybind to build latest openvino
-PREFERRED_VERSION_python3-pybind11 = "2.11.1"
-PREFERRED_VERSION_python3-pybind11-native = "2.11.1"
-
 PACKAGECONFIG:append:pn-openvino-inference-engine = " opencl"
 
 # Enable building inference engine python API.
