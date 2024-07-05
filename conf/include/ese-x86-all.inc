@@ -11,7 +11,6 @@ DISTRO_FEATURES:append = " virtualization"
 # users may mask uneeded ones to speed up bitbake
 BBMULTICONFIG ??= "x86-ese-installer x86-mlt x86-musl x86-minimal x86-minimal-netboot x86-minimal-provisioning \
   x86-2021 x86-2021-minimal x86-2021-minimal-netboot x86-rt-2021 x86-2021-qemu_host \
-  x86-2022 x86-rt-2022 x86-2022-minimal x86-2022-minimal-netboot \
   x86-2023 x86-rt-2023 x86-2023-minimal x86-2023-minimal-netboot"
 
 # Machine Selection
@@ -90,9 +89,6 @@ BBMASK:append = " meta-mender/meta-mender-core/recipes-bsp/u-boot/u-boot-fw-util
 # Variable 'MENDER_EFI_LOADER' is defined in bbclass file 'mender-setup-grub.inc' but 'INHERIT:remove = "mender-setup"'
 # removing the inclusion of bbclass file 'mender-setup-grub.inc'
 MENDER_EFI_LOADER:pn-grub-efi-mender-precompiled ??= ""
-
-# meta-intel-edison nor meta-debian is not used
-BBMASK:append = " meta-mender/meta-mender-core/recipes-bsp/u-boot/u-boot-fw-utils_%.bbappend"
 
 # serial console settings
 SERIAL_CONSOLES:append = " 115200;ttyS4 115200;ttyS5"
