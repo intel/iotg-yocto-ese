@@ -30,7 +30,6 @@ PULSEAUDIO_PKGS ?= "\
 "
 RDEPENDS:${PN}-audio-base = "\
     libasound \
-    alsa-oss \
     alsa-tools \
     alsa-utils \
     ${@bb.utils.contains('DISTRO_FEATURES', 'pulseaudio', '${PULSEAUDIO_PKGS}', '', d)} \

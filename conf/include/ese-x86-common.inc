@@ -38,16 +38,16 @@ MACHINE_FEATURES:remove = "pcbios"
 
 DISTRO_FEATURES:append = " x11 wayland vulkan"
 CORE_IMAGE_EXTRA_INSTALL += "wayland weston"
-DISTRO_FEATURES_NATIVE:append = " x11"
+DISTRO_FEATURES_NATIVE:append = " x11 xattr"
 DISTRO_FEATURES_NATIVESDK:append = " x11"
 
 # Set features for media
 IMAGE_INSTALL:append = " gstreamer1.0-libav"
-DISTRO_FEATURES:append = " msdk onevpl"
+DISTRO_FEATURES:append = " msdk vpl"
 IMAGE_INSTALL:append = " intel-media-driver"
 IMAGE_INSTALL:append = "${@bb.utils.contains("DISTRO_FEATURES","msdk", " intel-mediasdk", "", d)}"
 IMAGE_INSTALL:append = "${@bb.utils.contains("DISTRO_FEATURES","msdk", " intel-mediasdk-samples", "", d)}"
-IMAGE_INSTALL:append = "${@bb.utils.contains("DISTRO_FEATURES","onevpl", " onevpl onevpl-intel-gpu", "", d)}"
+IMAGE_INSTALL:append = "${@bb.utils.contains("DISTRO_FEATURES","vpl", " libvpl vpl-gpu-rt", "", d)}"
 PACKAGECONFIG:append:pn-gstreamer1.0-libav = " libav"
 PACKAGECONFIG:append:pn-gstreamer1.0-plugins-base = "${@bb.utils.filter('DISTRO_FEATURES', 'opengl', d)}"
 IMAGE_INSTALL:append = " vulkan-loader"
@@ -72,8 +72,9 @@ PACKAGECONFIG:append:pn-clang-native = "${@bb.utils.contains("LAYERSERIES_COMPAT
 
 DISTRO_FEATURES:append = " dri3"
 
-# Add fwupdate packages
-IMAGE_INSTALL:append = " fwupdate fwupdate-boot"
+# Add fwupd fwupd-efi and udisks2 for Manageability FOTA test
+DISTRO_FEATURES:append = " polkit"
+IMAGE_INSTALL:append = " fwupd fwupd-efi udisks2"
 
 # Remove ltp to reduce image size
 PACKAGE_EXCLUDE = "ltp"
@@ -302,10 +303,6 @@ IMAGE_INSTALL:append = " openvino-inference-engine-samples"
 # This is required for running e2e_oss test cases
 IMAGE_INSTALL:append = " openvino-inference-engine-python3"
 
-# Include model optimizer to the target image.
-# This is required for running e2e_oss test cases
-IMAGE_INSTALL:append = " openvino-model-optimizer"
-
 # python3 packages needed by the inference engine python test script to transform the input image to expected format
 IMAGE_INSTALL:append = " python3-opencv python3-numpy"
 
@@ -315,9 +312,9 @@ IMAGE_INSTALL:append = " open-model-zoo"
 ########## clang/llvm size problems
 BAD_RECOMMENDATIONS:append = " clang-staticdev"
 
-# Set preferred version for opencl-clang to LLVM14
-PREFERRED_VERSION_opencl-clang = "14%"
-PREFERRED_VERSION_opencl-clang-native = "14%"
+# Set preferred version for opencl-clang to LLVM15
+PREFERRED_VERSION_opencl-clang = "15%"
+PREFERRED_VERSION_opencl-clang-native = "15%"
 
 # Adding recipes for platform specific changes
 IMAGE_INSTALL:append = " audio-hda-load"
@@ -364,3 +361,13 @@ PREFERRED_PROVIDER_nativesdk-weston = "nativesdk-weston-intel"
 
 # Adding recipes for SRIOV (Spice display and protocol feature)
 IMAGE_INSTALL:append = " spice spice-gtk usbredir virt-viewer"
+
+# opencl-icd required mentioned specifically starting yocto 4.3 onward
+PREFERRED_RPROVIDER_virtual-opencl-icd = "ocl-icd"
+PREFERRED_PROVIDER_virtual/opencl-icd = "ocl-icd"
+
+# Setting mender client to Golang client. The default is the C++ client starting Yocto 5.0 onward.
+# Remove `-client` to go from the Golang to the C++ implementation. Refer meta-mender/meta-mender-core/classes/mender-setup.bbclass.
+PREFERRED_PROVIDER_mender-native = "mender-client-native"
+PREFERRED_RPROVIDER_mender-auth = "mender-client"
+PREFERRED_RPROVIDER_mender-update = "mender-client"

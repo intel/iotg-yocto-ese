@@ -77,7 +77,7 @@ IMAGE_INSTALL:append = " mender-relabel mender-reconf"
 # Mender helper init
 INITRAMFS_IMAGE_NAME = "mender-initramfs"
 INITRAMFS_IMAGE_RECIPE = "mc:${BB_CURRENT_MC}:x86-musl:${INITRAMFS_IMAGE_NAME}"
-INITRAMFS_IMAGE_PATH = "${TOPDIR}/tmp-x86-musl-musl/deploy/images/${MACHINE}/${INITRAMFS_IMAGE_NAME}-${MACHINE}.cpio"
+INITRAMFS_IMAGE_PATH = "${TOPDIR}/tmp-x86-musl-musl/deploy/images/${MACHINE}/${INITRAMFS_IMAGE_NAME}-${MACHINE}${IMAGE_NAME_SUFFIX}.cpio"
 # Mender boot hints
 APPEND += "${WKS_BOOT_HINT}"
 
