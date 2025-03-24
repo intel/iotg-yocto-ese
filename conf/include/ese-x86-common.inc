@@ -240,16 +240,13 @@ IMAGE_INSTALL:append = " packagegroup-kernel-oot"
 # DPDK
 IMAGE_INSTALL:append = " dpdk dpdk-staticdev dpdk-dev dpdk-examples dpdk-tools"
 PACKAGECONFIG:append:pn-dpdk = " afxdp libvirt"
-KERNEL_PROVIDERS_EXTRA_MODULES[5.15] += "dpdk-module dpdk-kmods"
 KERNEL_PROVIDERS_EXTRA_MODULES[6.6] += "dpdk-module dpdk-kmods"
+KERNEL_PROVIDERS_EXTRA_MODULES[6.12] += "dpdk-module dpdk-kmods"
 
 # wifi module is handled specially so that it may be possible to have some kernels using the out of tree module and others
-# using the internal module, see meta-intel-ese-bsp/classes/kernel-wifi-conf.bbclass
+# using the internal module, see meta-intel-iot-bsp/classes/kernel-wifi-conf.bbclass
 # enabling the driver from backport-iwlwifi disables the kernel in-tree version
-DISTRO_FEATURES:append = " backport-iwlwifi-5.15"
 KERNEL_PROVIDERS_EXTRA_MODULES_WIFI_COMPAT ?= ""
-KERNEL_PROVIDERS_EXTRA_MODULES_WIFI_COMPAT:append = "${@bb.utils.contains("DISTRO_FEATURES", "backport-iwlwifi-5.15", " 5.15", "", d)}"
-KERNEL_PROVIDERS_EXTRA_MODULES[5.15] += "${@bb.utils.contains("DISTRO_FEATURES", "backport-iwlwifi-5.15", "backport-iwlwifi", "", d)}"
 
 # autoload modules
 KERNEL_MODULE_AUTOLOAD:append = " configfs uhid"
@@ -327,12 +324,6 @@ IMAGE_INSTALL:append = "${@bb.utils.contains("IMAGE_FEATURES", "dev-pkgs", " itt
 
 # Enable tpm2-abrmd service
 SYSTEMD_AUTO_ENABLE:pn-tpm2-abrmd = "enable"
-
-# Set tpm2-tools preferred version
-PREFERRED_VERSION_tpm2-tools = "5.5"
-
-# Set tpm2-tss preferred version
-PREFERRED_VERSION_tpm2-tss = "4.0.1"
 
 # Set tpm2-abrmd preferred version
 PREFERRED_VERSION_tpm2-abrmd = "3.0.0"
