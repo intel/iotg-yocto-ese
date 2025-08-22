@@ -10,7 +10,6 @@ DISTRO_FEATURES:append = " virtualization"
 # available multiconfigs
 # users may mask uneeded ones to speed up bitbake
 BBMULTICONFIG ??= "x86-ese-installer x86-mlt x86-musl x86-minimal x86-minimal-netboot x86-minimal-provisioning \
-  x86-2023 x86-rt-2023 x86-2023-minimal x86-2023-minimal-netboot \
   x86-2024 x86-rt-2024 x86-2024-minimal x86-2024-minimal-netboot"
 
 # Machine Selection
